@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message</title>
+</head>
+<body>
+    <div id="intro"></div>
+    <script>
+        // TODO: Add hello code
+        // function getMessage(name) {
+        //     return `Hello, ${name}...`;
+        // }
+        // const message = getMessage('Ornella');
+        // document.write(message);
+        
+        // TODO: Add setTimeout code
+        // setTimeout(
+        //     () => { document.write('...Hello again!')},
+        // 2000 );
+    
+        function getMessage(name) {
+            return `Hello, ${name}...`;
+        }
+    
+        function age(age) {
+            return `I'm ${age}years old.`
+        }
+
+        function major(major) {
+            return `My major is ${major}.`
+        }
+
+        function hobby(hobby){
+            return `My hobby is ${hobby}.`
+        }
+
+        const intros = [ () => getMessage("HyoEun"), 
+                        ()=>age("23"), 
+                        () => major("Computer Education"), 
+                        () => hobby("watching movies")];
+        let index = 0; 
+        const introDiv = document.getElementById("intro");
+        
+        // 자기소개 업데이트 함수
+        function update() {
+            introDiv.innerText = intros[index](); // 함수 실행 결과 넣기
+            index = (index + 1) % intros.length;  // 배열 끝에 도달하면 다시 처음으로
+        }
+
+        update(); //맨 처음
+        setInterval(update, 3000); //3초마다 실행
+    </script>
+</body>
+</html>
