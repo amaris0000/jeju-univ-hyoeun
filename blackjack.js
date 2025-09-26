@@ -1,8 +1,7 @@
 function randomCard(){
     return Math.floor(Math.random()*11)+1
 }
-//asdf
-
+//test
 //Player Card
 let cardOne = randomCard();
 let cardTwo = randomCard();
