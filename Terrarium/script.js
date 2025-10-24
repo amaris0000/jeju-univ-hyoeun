@@ -41,8 +41,13 @@ function dragElement(terrariumElement) {
         console.log(pos1, pos2, pos3, pos4);
         terrariumElement.style.top = terrariumElement.offsetTop - pos2 + 'px';
         terrariumElement.style.left = terrariumElement.offsetLeft - pos1 + 'px'; 
+<<<<<<< HEAD
         zIndexCounter++;
         terrariumElement.style.zIndex = zIndexCounter;
+=======
+        // zIndexCounter++;
+        // terrariumElement.style.zIndex = zIndexCounter;
+>>>>>>> b7cfb28 (Fix)
     }
 
     function stopElementDrag() {

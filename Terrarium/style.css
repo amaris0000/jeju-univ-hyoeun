@@ -46,27 +46,15 @@ padding: 10px;
 }
 
 .plant-holder {
-position: relative;
-height: 13%;
+    position: relative;
+    height: 13%;
+    left: -10px;
 }
-
 .plant {
-position: absolute;
-margin-top: 25px;
-margin-bottom: 25px;
-max-width: 110%;
-max-height: 110%;
-z-index: 2;
-left: 50%;
-top: 50%;
-transform: translate(-50%, -50%); /*식물 이미지 정중앙을 컨테이너 중앙에 맞추기 위해 이미지 크기의 절반만큼 추가 조정해줘야 함!*/
-}
-
-#terrarium{
-position: relative; 
-margin-bottom: 10px; 
-height: 80vh;
-min-height: 450px;
+    position: absolute;
+    max-width: 150%;
+    max-height: 150%;
+    z-index: 2;
 }
 
 .jar-walls {
