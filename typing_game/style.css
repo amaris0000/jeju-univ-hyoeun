@@ -1,0 +1,95 @@
+body{
+    background-color: rgb(173, 198, 154);
+    font-size: larger;
+}
+
+.highlight {
+background-color: yellow;
+}
+
+.error {
+background-color: lightcoral;
+border: red;
+}
+
+h1{
+    text-align: center;
+    margin-top: 40px;
+}
+
+p{
+    text-align: center;
+    margin-top: 40px;
+}
+
+#text_input{
+    text-align: center;
+}
+
+#typed-value{
+    transition: transform 0.2s ease;
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+}
+
+#typed-value:focus{
+        outline: none;
+}
+
+.change_scale{
+    transform: scale(1.05);
+}   
+
+#start{
+    background-color: olive;
+    color: white;
+    width: 80px;
+    height:40px;
+    border-radius: 8px;
+    border: none;
+    margin-left: 10px;
+    font-size: 20;
+    cursor: pointer;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_content{
+    background-color: white;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal_message{
+    font-size: medium;
+}
+
+#modal_close{
+    background-color: olive;
+    color: white;
+    width: 80px;
+    height:40px;
+    border-radius: 8px;
+    border: none;
+    margin-left: 10px;
+    font-size: 20;  
+    cursor: pointer; 
+}
