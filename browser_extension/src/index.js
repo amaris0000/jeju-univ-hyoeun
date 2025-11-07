@@ -22,63 +22,6 @@ function handleSubmit(e) {
     setUpUser(apiKey.value, region.value);
 }
 
-function init() {
-    // Check if user has previously saved API credentials
-    const storedApiKey = localStorage.getItem('apiKey');
-    const storedRegion = localStorage.getItem('regionName');
-
-    // Set extension icon to generic green (placeholder for future lesson)
-    // TODO: Implement icon update in next lesson
-
-    if (storedApiKey === null || storedRegion === null) {
-        // First-time user: show the setup form
-        form.style.display = 'block';
-        results.style.display = 'none';
-        loading.style.display = 'none';
-        clearBtn.style.display = 'none';
-        errors.textContent = '';
-    } else {
-        // Returning user: load their saved data automatically
-        displayCarbonUsage(storedApiKey, storedRegion);
-        results.style.display = 'none';
-        form.style.display = 'none';
-        clearBtn.style.display = 'block';
-    }
-}
-
-function setUpUser(apiKey, regionName) {
-    localStorage.setItem('apiKey', apiKey);
-    localStorage.setItem('regionName', regionName);
-    loading.style.display = 'block';
-    errors.textContent = '';
-    clearBtn.style.display = 'block';
-    displayCarbonUsage(apiKey, regionName);
-}
-
-//다크 모드
-    const toggleBtn = document.getElementById("toggle-theme");
-    
-    toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    })
-
-const calculateColor = async (value) => {
-    let co2Scale = [0, 150, 600, 750, 800];
-    let colors = ['#2AA364', '#F5EB4D', '#9E4229', '#381D02', '#381D02'];
-
-    let closestNum = co2Scale.sort((a, b) => {
-        return Math.abs(a - value) - Math.abs(b - value);
-    })[0];
-    //console.log(value + ' is closest to ' + closestNum);
-    let num = (element) => element > closestNum;
-    let scaleIndex = co2Scale.findIndex(num);
-
-    let closestColor = colors[scaleIndex];
-    //console.log(scaleIndex, closestColor);
-
-    chrome.runtime.sendMessage({ action: 'updateIcon', value: { color: closestColor } });
-};
-
 async function displayCarbonUsage(apiKey, region) {
     try {
         // Fetch carbon intensity data from CO2 Signal API
@@ -126,6 +69,65 @@ async function displayCarbonUsage(apiKey, region) {
         errors.textContent = 'Sorry, we couldn\'t fetch data for that region. Please check your API key and region code.';
     }
 }
+
+function init() {
+    // Check if user has previously saved API credentials
+    const storedApiKey = localStorage.getItem('apiKey');
+    const storedRegion = localStorage.getItem('regionName');
+
+    // Set extension icon to generic green (placeholder for future lesson)
+    // TODO: Implement icon update in next lesson
+
+    if (storedApiKey === null || storedRegion === null) {
+        // First-time user: show the setup form
+        form.style.display = 'block';
+        results.style.display = 'none';
+        loading.style.display = 'none';
+        clearBtn.style.display = 'none';
+        errors.textContent = '';
+    } else {
+        // Returning user: load their saved data automatically
+        displayCarbonUsage(storedApiKey, storedRegion);
+        results.style.display = 'none';
+        form.style.display = 'none';
+        clearBtn.style.display = 'block';
+    }
+}
+
+function setUpUser(apiKey, regionName) {
+    localStorage.setItem('apiKey', apiKey);
+    localStorage.setItem('regionName', regionName);
+    loading.style.display = 'block';
+    errors.textContent = '';
+    clearBtn.style.display = 'block';
+    form.style.display = 'none';
+    displayCarbonUsage(apiKey, regionName);
+}
+
+// //다크 모드
+//     const toggleBtn = document.getElementById("toggle-theme");
+    
+//     toggleBtn.addEventListener("click", () => {
+//     document.body.classList.toggle("dark");
+//     })
+
+const calculateColor = async (value) => {
+    let co2Scale = [0, 150, 600, 750, 800];
+    let colors = ['#2AA364', '#F5EB4D', '#9E4229', '#381D02', '#381D02'];
+
+    let closestNum = co2Scale.sort((a, b) => {
+        return Math.abs(a - value) - Math.abs(b - value);
+    })[0];
+    //console.log(value + ' is closest to ' + closestNum);
+    let num = (element) => element > closestNum;
+    let scaleIndex = co2Scale.findIndex(num);
+
+    let closestColor = colors[scaleIndex];
+    //console.log(scaleIndex, closestColor);
+
+    chrome.runtime.sendMessage({ action: 'updateIcon', value: { color: closestColor } });
+};
+
 
 form.addEventListener('submit', (e) => handleSubmit(e));
 clearBtn.addEventListener('click', (e) => reset(e));
