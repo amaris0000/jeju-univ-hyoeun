@@ -1,0 +1,24 @@
+body{
+    width: 400px;
+    height: 600px;
+    display: block;
+    align-items: center;
+}
+
+.input_information{
+    text-align: center;
+}
+
+#yearInput{
+    align-items: center;
+    width: 200px;
+    height: 20px;
+    outline: none;
+    border-radius: 10px;
+    border-color: lightgrey;
+}
+
+#viewHoliday{
+    border-radius: 10px;
+    border-color: lightgrey;
+}
